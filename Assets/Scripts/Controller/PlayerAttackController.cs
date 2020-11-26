@@ -3,7 +3,7 @@
 public class PlayerAttackController : MonoBehaviour
 {
     [SerializeField] private LayerMask _layerMask;
-
+    [SerializeField] private IdleDissolveController _sword;
     private PlayerParametersModel _playerModel;
     private CustomInputManager _input;
 
@@ -30,7 +30,7 @@ public class PlayerAttackController : MonoBehaviour
     private void Attack()
     {
         if (_isAttacking) return;
-
+        _sword.VisibleOnAttack();
         //_isAttacking = true;
 
         //Ray straight out of the center of the camera

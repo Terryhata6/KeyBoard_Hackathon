@@ -15,12 +15,22 @@ public class IdleDissolveController : MonoBehaviour
     {
         meshRenderer = GetComponent<MeshRenderer>();
         _isVisible = false; 
-        _standVisibleRecently = false;  
+        _standVisibleRecently = true;  
     }
 
 
     void Update()
-    {             
+    {
+        CutoffExecute();
+    }
+
+    public void VisibleOnAttack()
+    {
+        _standVisibleRecently = true;
+    }
+
+    private void CutoffExecute()
+    {
         if (_standVisibleRecently == true)
         {
             if (_cutoff > 0f)//где-то здесь проверка на повторную атаку
@@ -53,7 +63,6 @@ public class IdleDissolveController : MonoBehaviour
                 }
                 meshRenderer.material.SetFloat("_Cutoff", _cutoff);
             }
-        }              
+        }
     }
-
 }
