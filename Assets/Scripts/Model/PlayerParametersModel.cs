@@ -52,6 +52,23 @@ public class PlayerParametersModel : MonoBehaviour
         }
     }
 
+    public float GetCurrentHP()
+    {
+        return _currentHP;
+    }
+    public float GetMaxHP()
+    {
+        return _maxHP;
+    }
+    public float GetCurrentStamina()
+    {
+        return _currentStamina;
+    }
+    public float GetMaxStamina()
+    {
+        return _maxStamina;
+    }
+
     public void GetDamage(int damage)
     {
         _currentHP -= damage;

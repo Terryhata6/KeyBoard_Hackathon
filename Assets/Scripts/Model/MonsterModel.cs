@@ -9,14 +9,6 @@ public class MonsterModel : MonoBehaviour
     [SerializeField] private float _attackPower;
     [SerializeField] private float _attackSpeed;
 
-
-    private void Update()
-    {
-        //Debug-------------------------------------
-        GetComponentInChildren<Text>().text = $"{_hp}";
-        //Debug-------------------------------------
-    }
-
     public void GetDamage(float damage)
     {
         _hp -= damage;
