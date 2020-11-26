@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class MonsterModel : MonoBehaviour
 {
@@ -7,7 +6,9 @@ public class MonsterModel : MonoBehaviour
 
     [SerializeField] private float _hp;
     [SerializeField] private float _attackPower;
-    [SerializeField] private float _attackSpeed;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _rangeOfView;
+    [SerializeField] private float _rangeOfAttack;
 
     public void GetDamage(float damage)
     {
@@ -24,9 +25,16 @@ public class MonsterModel : MonoBehaviour
     {
         return _attackPower;
     }
-    public float GetAttackSpeed()
+    public float GetSpeed()
     {
-        return _attackSpeed;
+        return _speed;
     }
-
+    public float GetRangeOfView()
+    {
+        return _rangeOfView;
+    }
+    public float GetRangeOfAttack()
+    {
+        return _rangeOfAttack;
+    }
 }
