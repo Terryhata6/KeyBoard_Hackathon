@@ -4,6 +4,8 @@ using System.Collections;
 // AimBehaviour inherits from GenericBehaviour. This class corresponds to aim and strafe behaviour.
 public class AimBehaviourBasic : GenericBehaviour
 {
+	private CustomInputManager _input;
+
 	public string aimButton = "Aim", shoulderButton = "Aim Shoulder";     // Default aim and switch shoulders buttons.
 	public Texture2D crosshair;                                           // Crosshair texture.
 	public float aimTurnSmoothing = 0.15f;                                // Speed of turn response when aiming to match camera facing.
@@ -16,6 +18,7 @@ public class AimBehaviourBasic : GenericBehaviour
 	// Start is always called after any Awake functions.
 	void Start ()
 	{
+		_input = GetComponent<CustomInputManager>();
 		// Set up the references.
 		aimBool = Animator.StringToHash("Aim");
 	}
@@ -24,11 +27,11 @@ public class AimBehaviourBasic : GenericBehaviour
 	void Update ()
 	{
 		// Activate/deactivate aim by input.
-		if (Input.GetAxisRaw(aimButton) != 0 && !aim)
+		if (Input.GetKeyDown(_input.AimButton) && !aim)
 		{
 			StartCoroutine(ToggleAimOn());
 		}
-		else if (aim && Input.GetAxisRaw(aimButton) == 0)
+		else if (Input.GetKeyDown(_input.AimButton) && aim)
 		{
 			StartCoroutine(ToggleAimOff());
 		}
