@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 4c143c74b87d62041a07e525bdef9f62
+guid: 55c859a0baf30d44aaa75286a35d4658
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: 4766743509240271340
-    second: sandidle
+      74: -5252816984213320552
+    second: idle
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -83,7 +83,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.01
     rootMotionBoneName: Robot
     hasTranslationDoF: 0
     hasExtraRoot: 0
