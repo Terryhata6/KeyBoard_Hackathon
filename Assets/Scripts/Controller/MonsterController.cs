@@ -23,14 +23,27 @@ public class MonsterController : MonoBehaviour
         if (_distance <= _enemy.GetRangeOfView())
         {
             transform.LookAt(_player.transform);
-            Moving();
+            if (_distance <= _enemy.GetRangeOfAttack())
+            {
+                Attack();
+            }
+            else
+            {
+                Moving();
+            }
         }
     }
 
     private void Moving()
     {
+        _animator.SetBool(MonsterAnimatorStrings.Attack, false);
         _animator.SetBool(MonsterAnimatorStrings.Walk, true);
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _enemy.GetSpeed() * Time.deltaTime);
+    }
+    private void Attack()
+    {
+        _animator.SetBool(MonsterAnimatorStrings.Walk, false);
+        _animator.SetBool(MonsterAnimatorStrings.Attack, true);
     }
 
     public void GetDamage(float damage)

@@ -8,6 +8,7 @@ public class MonsterModel : MonoBehaviour
     [SerializeField] private float _attackPower;
     [SerializeField] private float _speed;
     [SerializeField] private float _rangeOfView;
+    [SerializeField] private float _rangeOfAttack;
 
     public void GetDamage(float damage)
     {
@@ -31,5 +32,9 @@ public class MonsterModel : MonoBehaviour
     public float GetRangeOfView()
     {
         return _rangeOfView;
+    }
+    public float GetRangeOfAttack()
+    {
+        return _rangeOfAttack;
     }
 }
