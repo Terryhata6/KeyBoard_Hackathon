@@ -1,18 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CubeOfDeathModel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private MonsterModel _enemy;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.GetComponent<PlayerParametersModel>())
+        {
+            _enemy = GetComponentInParent<MonsterModel>();
+            other.GetComponent<PlayerParametersModel>().GetDamage(_enemy.GetAttackPower());
+        }
     }
 }

@@ -58,7 +58,7 @@ public class PlayerParametersModel : MonoBehaviour
         }
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(float damage)
     {
         if (_isTGM) return;
 
@@ -66,6 +66,7 @@ public class PlayerParametersModel : MonoBehaviour
         
         if (_currentHP <= 0)
         {
+            _currentHP = 0;
             IsDead = true;
         }
     }
