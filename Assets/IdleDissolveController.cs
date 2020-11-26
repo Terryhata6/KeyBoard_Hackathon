@@ -11,6 +11,7 @@ public class IdleDissolveController : MonoBehaviour
     [SerializeField]private bool _standVisibleRecently; //Говорит был ли объект призван недавно и разрешает сделать его видимым
     private float _cutoff = 0.0f;
     private bool _isVisible; //видимый объект?
+
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();

@@ -8,7 +8,6 @@ public class NanoBotInstantiate : MonoBehaviour
     //[SerializeField] private Transform _particlePosition; //позиция врага
     private void FixedUpdate()
     {
-
         StartCoroutine(ParticleInstantiate());
     }
     private IEnumerator ParticleInstantiate()

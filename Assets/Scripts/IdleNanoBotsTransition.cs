@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class IdleNanoBotsTransition : MonoBehaviour
 {
-    [SerializeField] private Transform TransitionTarget; //Сюда поместить объект с Прибор CP-500
     [SerializeField] private float MoveSpeed;
     [SerializeField] [Range(1.0f, 5.0f)] private float MoveAccelerationSpeed;
     [SerializeField] private float MoveSpeedMax;
     [SerializeField] [Range(0f, 3.0f)] private float TimeToDestroy;
+    private IdleLightController _idleLightToolBox;
+    private Transform _TargetTransform;
     //private Transform _playerTransform;
-
 
     public void Start()
     {
-        // _playerTransform = TransitionTarget.transform;
-        //var offset = new Vector3(0, 10, 0);
+        _idleLightToolBox = FindObjectOfType<IdleLightController>();
+        _TargetTransform = FindObjectOfType<HandToolType>().transform;
 
     }
-
 
     // Update is called once per frame
     public void Update()
@@ -27,14 +26,20 @@ public class IdleNanoBotsTransition : MonoBehaviour
         {
             MoveSpeed += MoveAccelerationSpeed * Time.deltaTime;
         }
-        if (transform.position == TransitionTarget.position)
+        if (Vector3.Distance(transform.position, _TargetTransform.position) <= 0.1f) //ОЧЕНЬ ДОРОГО transform.position == _TargetTransform.position
         {
-            Destroy(gameObject, TimeToDestroy);
+            DestroyAndGetNano();
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, TransitionTarget.position, MoveSpeed * Time.deltaTime);
-            Destroy(gameObject, 10f);
+            transform.position = Vector3.MoveTowards(transform.position, _TargetTransform.position, MoveSpeed * Time.deltaTime);
+            //Destroy(gameObject, 10f);
         }
+    }
+
+    private void DestroyAndGetNano()
+    {
+        Destroy(gameObject, TimeToDestroy);
+        _idleLightToolBox.GiveMoreLight();
     }
 }
