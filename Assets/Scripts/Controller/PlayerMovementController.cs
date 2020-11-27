@@ -4,11 +4,13 @@ public class PlayerMovementController : MonoBehaviour
 {
     private CustomInputManager _input;
     private PlayerParametersModel _player;
+    private Animator _animator;
 
     private void Start()
     {
         _player = GetComponent<PlayerParametersModel>();
         _input = GetComponent<CustomInputManager>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -20,6 +22,10 @@ public class PlayerMovementController : MonoBehaviour
         if (Input.GetKeyDown(_input.RightRollButton))
         {
             RightDash(_player.GetDashPower(), _player.GetDashPrice());
+        }
+        if (Input.GetKeyDown(_input.RollButton))
+        {
+            Roll(_player.GetDashPrice());
         }
     }
 
@@ -37,6 +43,15 @@ public class PlayerMovementController : MonoBehaviour
         if (_player.SpendStamina(dashprice))
         {
             GetComponent<Rigidbody>().AddForce(Vector3.right * dashpower, ForceMode.Impulse);
+            _player.ToggleGodMode();
+        }
+    }
+
+    private void Roll(float dashprice)
+    {
+        if (_player.SpendStamina(dashprice))
+        {
+            _animator.SetTrigger("Roll");
             _player.ToggleGodMode();
         }
 

@@ -23,9 +23,14 @@ public class PlayerParametersModel : MonoBehaviour
     [SerializeField] private float _attackPower;
     [SerializeField] private float _attackRange;
 
+    public bool _aim;
     private bool _isTGM;
 
+    public void Awake()
+    {
+        _aim = false;
 
+    }
     private void Update()
     {
         if (_currentHP < _maxRegenHp)

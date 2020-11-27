@@ -6,6 +6,7 @@ public class CustomInputManager : MonoBehaviour
     [SerializeField] public KeyCode AimButton;
     [SerializeField] public KeyCode LeftRollButton;
     [SerializeField] public KeyCode RightRollButton;
+    [SerializeField] public KeyCode RollButton;
 
     [Header("Attack")]
     [SerializeField] public KeyCode BaseAttackButton;
