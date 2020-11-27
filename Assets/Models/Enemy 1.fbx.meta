@@ -6,7 +6,22 @@ ModelImporter:
   - first:
       74: 4766743509240271340
     second: sandidle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default_Material
+    second: {fileID: 2100000, guid: 4c792c25d400f6a49a92ba4f0f9574e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: 4c792c25d400f6a49a92ba4f0f9574e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: robot_details1
+    second: {fileID: 2100000, guid: 4c792c25d400f6a49a92ba4f0f9574e3, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

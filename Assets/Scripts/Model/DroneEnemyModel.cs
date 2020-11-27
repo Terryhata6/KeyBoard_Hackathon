@@ -6,6 +6,7 @@ public class DroneEnemyModel : MonoBehaviour
 
     [SerializeField] private float _currentHP;
     [SerializeField] private float _speed;
+    [SerializeField] private float _viewRange;
     [SerializeField] private float _attackPower;
     [SerializeField] private float _attackRange;
     
@@ -35,5 +36,9 @@ public class DroneEnemyModel : MonoBehaviour
     public float GetAttackRange()
     {
         return _attackRange;
+    }
+    public float GetViewRange()
+    {
+        return _viewRange;
     }
 }
