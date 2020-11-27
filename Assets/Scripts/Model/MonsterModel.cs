@@ -16,6 +16,7 @@ public class MonsterModel : MonoBehaviour
 
         if (_hp <= 0)
         {
+            _hp = 0;
             IsDead = true;
         }
 

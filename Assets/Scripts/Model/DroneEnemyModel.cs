@@ -9,7 +9,7 @@ public class DroneEnemyModel : MonoBehaviour
     [SerializeField] private float _viewRange;
     [SerializeField] private float _attackPower;
     [SerializeField] private float _attackRange;
-    
+      
 
     public void GetDamage(float damage)
     {

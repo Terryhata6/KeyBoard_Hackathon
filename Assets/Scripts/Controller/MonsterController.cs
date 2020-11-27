@@ -6,11 +6,14 @@ public class MonsterController : MonoBehaviour
     private MonsterModel _enemy;
     private Animator _animator;
     private MonsterState _state;
+    private Rigidbody _rig;
 
     private float _distance;
 
     private void Start()
     {
+        _rig = GetComponent<Rigidbody>();
+        _rig.isKinematic = true;
         _player = FindObjectOfType<PlayerParametersModel>();
         _enemy = GetComponent<MonsterModel>();
         _animator = GetComponent<Animator>();
@@ -18,9 +21,19 @@ public class MonsterController : MonoBehaviour
 
     private void Update()
     {
+        if (_enemy.IsDead)
+        {
+            _animator.enabled = false;
+            _rig.isKinematic = false;
+            _rig.AddForce(Vector3.forward * -1.0f, ForceMode.Impulse);
+            Destroy(gameObject, 10.0f);
+        }
+
+
+        
         _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-        if (_distance <= _enemy.GetRangeOfView())
+        if (_distance <= _enemy.GetRangeOfView() && !_enemy.IsDead)
         {
             transform.LookAt(_player.transform);
             if (_distance <= _enemy.GetRangeOfAttack())

@@ -26,11 +26,19 @@ public class IdleDissolveKnifeController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<MonsterController>() != null) 
+        if (other.GetComponent<DroneEnemyModel>() != null) 
         { 
-            other.GetComponent<MonsterController>().GetDamage(_attackPower);
+            other.GetComponent<DroneEnemyModel>().GetDamage(_attackPower);
             Destroy(gameObject);
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<DroneEnemyModel>() != null)
+        {
+            collision.gameObject.GetComponent<DroneEnemyModel>().GetDamage(_attackPower);
+            Destroy(gameObject);            
+        }
+    }
 }
