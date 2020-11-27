@@ -1,12 +1,17 @@
 fileFormatVersion: 2
-guid: ebb452f991cbf96449953dce22b3c607
+guid: 4b0699f5bebb7a84c93cba15d6366f74
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: 1827226128182048838
-    second: Take Bubble
-  externalObjects: {}
+      74: 9065020501940916562
+    second: Nanobots_Cloud_animation
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NANOBOTS
+    second: {fileID: 2100000, guid: c94e97fd6daf9bf4cba06b01746c65e5, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -35,10 +40,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take Bubble
-      takeName: Take 001
+      name: Nanobots_Cloud_animation
+      takeName: Nanobots_new
       internalID: 0
-      firstFrame: 24
+      firstFrame: 26
       lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
@@ -113,7 +118,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: pCube57
+    rootMotionBoneName: nanobots
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

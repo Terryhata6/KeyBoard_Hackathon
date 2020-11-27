@@ -9,17 +9,21 @@ public class DroneEnemyController : MonoBehaviour
     private float _distance;
     private Rigidbody _rig;
     private NanoBotInstantiate _nanoAgent;
+    private bool _wasParticled;
 
 
 
     private void Start()
     {
+
         _rig = GetComponent<Rigidbody>();
         _rig.isKinematic = true;
         _player = FindObjectOfType<PlayerParametersModel>();
         _drone = GetComponent<DroneEnemyModel>();
         _animator = GetComponent<Animator>();
+        _nanoAgent = GetComponent<NanoBotInstantiate>();
         BIRNBIRNBIRN(false);
+        _wasParticled = false;
     }
 
     private void Update()
@@ -27,8 +31,11 @@ public class DroneEnemyController : MonoBehaviour
         if (_drone.IsDead)
         {
             _animator.enabled = false;
-            //Вызов Партиклов 
-            _nanoAgent.MakeParticle();
+            if (!_wasParticled)
+            {
+                _nanoAgent.MakeParticle();
+                _wasParticled = true;
+            }
             _rig.isKinematic = false;
             _rig.AddForce(Vector3.forward * -1.0f, ForceMode.Impulse);
             Destroy(gameObject, 10.0f);            

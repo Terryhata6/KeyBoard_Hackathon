@@ -8,6 +8,7 @@ public class MonsterController : MonoBehaviour
     private MonsterState _state;
     private Rigidbody _rig;
     private NanoBotInstantiate _nanoAgent;
+    private bool _wasParticled;
 
     private float _distance;
 
@@ -19,6 +20,8 @@ public class MonsterController : MonoBehaviour
         _enemy = GetComponent<MonsterModel>();
         _animator = GetComponent<Animator>();
         _nanoAgent = GetComponent<NanoBotInstantiate>();
+        _wasParticled = false;
+
 
     }
 
@@ -28,7 +31,11 @@ public class MonsterController : MonoBehaviour
         {
             _animator.enabled = false;
             //Вызов партиклов
-            _nanoAgent.MakeParticle();
+            if (!_wasParticled)
+            {
+                _nanoAgent.MakeParticle();
+                _wasParticled = true;
+            }
             _rig.isKinematic = false;
             _rig.AddForce(Vector3.forward * -1.0f, ForceMode.Impulse);
             Destroy(gameObject, 10.0f);
