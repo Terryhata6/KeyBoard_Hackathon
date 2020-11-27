@@ -6,13 +6,19 @@ public class NanoBotInstantiate : MonoBehaviour
 {
     [SerializeField] private GameObject _Particles;
     //[SerializeField] private Transform _particlePosition; //позиция врага
+    
     private void FixedUpdate()
     {
-        StartCoroutine(ParticleInstantiate());
+        //StartCoroutine(ParticleInstantiate());
     }
     private IEnumerator ParticleInstantiate()
     {
         yield return new WaitForSeconds(0.1f);
+        Instantiate(_Particles, gameObject.transform.position, Quaternion.identity);
+    }
+
+    public void MakeParticle() 
+    {
         Instantiate(_Particles, gameObject.transform.position, Quaternion.identity);
     }
     

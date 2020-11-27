@@ -8,7 +8,8 @@ public class DroneEnemyController : MonoBehaviour
     private Animator _animator;
     private float _distance;
     private Rigidbody _rig;
-    
+    private NanoBotInstantiate _nanoAgent;
+
 
 
     private void Start()
@@ -26,6 +27,8 @@ public class DroneEnemyController : MonoBehaviour
         if (_drone.IsDead)
         {
             _animator.enabled = false;
+            //Вызов Партиклов 
+            _nanoAgent.MakeParticle();
             _rig.isKinematic = false;
             _rig.AddForce(Vector3.forward * -1.0f, ForceMode.Impulse);
             Destroy(gameObject, 10.0f);            
