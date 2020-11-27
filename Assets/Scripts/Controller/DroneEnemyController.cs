@@ -7,10 +7,14 @@ public class DroneEnemyController : MonoBehaviour
     private PlayerParametersModel _player;
     private Animator _animator;
     private float _distance;
+    private Rigidbody _rig;
+    
 
 
     private void Start()
     {
+        _rig = GetComponent<Rigidbody>();
+        _rig.isKinematic = true;
         _player = FindObjectOfType<PlayerParametersModel>();
         _drone = GetComponent<DroneEnemyModel>();
         _animator = GetComponent<Animator>();
@@ -19,9 +23,17 @@ public class DroneEnemyController : MonoBehaviour
 
     private void Update()
     {
+        if (_drone.IsDead)
+        {
+            _animator.enabled = false;
+            _rig.isKinematic = false;
+            _rig.AddForce(Vector3.forward * -1.0f, ForceMode.Impulse);
+            Destroy(gameObject, 10.0f);            
+        }        
+
         _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-        if (_distance <= _drone.GetViewRange())
+        if (_distance <= _drone.GetViewRange() && !_drone.IsDead)
         {
             transform.LookAt(_player.transform);
 
